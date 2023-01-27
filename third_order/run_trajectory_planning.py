@@ -127,15 +127,15 @@ max_admissible_cop = Z_ref + np.tile([foot_length/2, foot_width/2], (walking_tim
 
 # time vs CoP and CoM in x-direction (forward): 'A.K.A run rabbit run !'
 # -------------------------------------------------
-plot_utils.plot_x(time, walking_time, min_admissible_CoP, max_admissible_cop, \
+plot_utils.plot_x(time, walking_time, min_admissible_CoP, max_admissible_cop, 
                   Z_x, X, Z_ref)
 
 # time VS CoP and CoM in y-direction (lateral): 'A.K.A what goes up must go down'
 # ----------------------------------------------------------
-plot_utils.plot_y(time, walking_time, min_admissible_CoP, max_admissible_cop, \
+plot_utils.plot_y(time, walking_time, min_admissible_CoP, max_admissible_cop, 
                   Z_y, Y, Z_ref)
 
 # plot CoP, CoM in x Vs Cop, CoM in y:
 # -----------------------------------
-plot_utils.plot_xy(time, walking_time, foot_length, foot_width, Z_ref, \
+plot_utils.plot_xy(time, walking_time, foot_length, foot_width, Z_ref, 
                    Z_x, Z_y, X, Y)

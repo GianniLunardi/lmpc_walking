@@ -70,7 +70,7 @@ def plot_xy(time, walking_time, foot_length, foot_width, Z_ref, Z_x, Z_y, X, Y):
     currentAxis    = plt.gca()
     for i in range(walking_time):
         current_foot = patches.Rectangle((Z_ref[i,0]-foot_length/2,
-                                          Z_ref[i,1]-foot_width/2),                                            foot_length, foot_width,   \
+                                          Z_ref[i,1]-foot_width/2), foot_length, foot_width,   
                                           linewidth = 0.8,
                                           linestyle = '-.',
                                           edgecolor = 'b',
@@ -100,7 +100,7 @@ def plot_horizons(desired_walking_time, N, desired_Z_ref, horizon_data,
 
         #plot_x(time_k, N, min_admissible_CoP, max_admissible_cop, \
         #                  Z_x_k, X_k, Z_ref_k)
-        plot_y(time_k, N, min_admissible_CoP, max_admissible_cop, \
+        plot_y(time_k, N, min_admissible_CoP, max_admissible_cop, 
                           Z_y_k, Y_k, Z_ref_k)
         #plot_xy(time_k, N, foot_length, foot_width, desired_Z_ref, \
         #                   Z_x_k, Z_y_k, X_k, Y_k)

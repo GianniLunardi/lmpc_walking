@@ -19,7 +19,7 @@
 # headers:
 # -------
 import numpy as np
-from LMPC_walking.second_order.motion_model import discrete_LIP_dynamics
+from motion_model import discrete_LIP_dynamics
 
 # Generate trajectory using 3rd order polynomial with following constraints:
 # x(0)=x0, x(T)=x1, dx(0)=dx(T)=0

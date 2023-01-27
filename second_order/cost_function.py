@@ -93,7 +93,7 @@ def compute_objective_terms(alpha, beta, gamma, step_duration, no_steps_per_T,
 if __name__=='__main__':
     import numpy.random as random
     import motion_model
-    print ' visualize your matrices like a Neo ! '.center(60,'*')
+    print(' visualize your matrices like a Neo ! '.center(60,'*'))
 
     delta_t = 0.1
     h       = 0.80

@@ -30,9 +30,9 @@ def plot_x(time, walking_time, min_admissible_CoP, max_admissible_cop, Z_x, X, Z
     plt.plot(time, Z_x, label = r'\textbf{computed CoP}')
     plt.plot(time, Z_ref[:,0])
     plt.plot(time, X[:,0], 'g', label = r'\textbf{CoM}')
-    plt.plot(time, min_admissible_CoP[0:walking_time, 0],'r', linestyle = '--',\
+    plt.plot(time, min_admissible_CoP[0:walking_time, 0],'r', linestyle = '--',
              linewidth = 0.5, label = r'\textbf{min CoP}')
-    plt.plot(time, max_admissible_cop[0:walking_time, 0],'m', linestyle = '--',\
+    plt.plot(time, max_admissible_cop[0:walking_time, 0],'m', linestyle = '--',
              linewidth = 0.5, label = r'\textbf{max CoP}')
 
     plt.xlabel(r'\textbf{time} (s)')
@@ -50,9 +50,9 @@ def plot_y(time, walking_time, min_admissible_CoP, max_admissible_cop, Z_y, Y, Z
     plt.plot(time, Z_y, label = r'\textbf{computed CoP}')
     plt.plot(time, Z_ref[:,1])
     plt.plot(time, Y[0:walking_time,0], 'g', label = r'\textbf{CoM}')
-    plt.plot(time, min_admissible_CoP[0:walking_time, 1],'r', linestyle = '--',\
+    plt.plot(time, min_admissible_CoP[0:walking_time, 1],'r', linestyle = '--',
              linewidth = 0.5, label = r'\textbf{min CoP}')
-    plt.plot(time, max_admissible_cop[0:walking_time, 1],'m', linestyle = '--',\
+    plt.plot(time, max_admissible_cop[0:walking_time, 1],'m', linestyle = '--',
              linewidth = 0.5, label = r'\textbf{max CoP}')
 
     plt.xlabel(r'\textbf{time} (s)')
@@ -67,12 +67,12 @@ def plot_xy(time, walking_time, foot_length, foot_width, Z_ref, Z_x, Z_y, X, Y):
     plt.plot( X[0:walking_time,0], Y[0:walking_time,0], 'lime', label = r'\textbf{CoM}')
     currentAxis    = plt.gca()
     for i in range(walking_time):
-        current_foot = patches.Rectangle((Z_ref[i,0]-foot_length/2,  \
-                                          Z_ref[i,1]-foot_width/2),  \
-                                          foot_length, foot_width,   \
-                                          linewidth = 0.8,           \
-                                          linestyle = '-.',          \
-                                          edgecolor = 'b',           \
+        current_foot = patches.Rectangle((Z_ref[i,0]-foot_length/2,  
+                                          Z_ref[i,1]-foot_width/2),  
+                                          foot_length, foot_width,   
+                                          linewidth = 0.8,           
+                                          linestyle = '-.',          
+                                          edgecolor = 'b',           
                                           facecolor = 'none')
         currentAxis.add_patch(current_foot)
     currentAxis.set_xlim([-0.5,5.0])
@@ -98,7 +98,7 @@ def plot_horizons(desired_walking_time, N, desired_Z_ref, horizon_data, foot_len
 
         #plot_x(time_k, N, min_admissible_CoP, max_admissible_cop, \
         #                  Z_x_k, X_k, Z_ref_k)
-        plot_y(time_k, N, min_admissible_CoP, max_admissible_cop, \
+        plot_y(time_k, N, min_admissible_CoP, max_admissible_cop, 
                           Z_y_k, Y_k, Z_ref_k)
         #plot_xy(time_k, N, foot_length, foot_width, desired_Z_ref, \
         #                   Z_x_k, Z_y_k, X_k, Y_k)

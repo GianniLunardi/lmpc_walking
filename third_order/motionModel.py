@@ -130,7 +130,7 @@ def compute_recursive_dynamics(P_ps, P_vs, P_as, P_zs, P_pu, P_vu, P_au, P_zu,\
     
 if __name__=='__main__':
     import numpy.random as random
-    print ' Test compute_recursive_matrices '.center(60,'*')
+    print(' Test compute_recursive_matrices '.center(60,'*'))
     h           = 0.80
     g           = 9.81
     T           = 0.1                # sampling time interval
@@ -161,7 +161,7 @@ if __name__=='__main__':
 
 #    print 'X:\n', X
 #    print 'X_real:\n', X_real.T
-    print 'Error on X',     np.max(np.abs(X[:-1,:]-X_real[:,1:].T))
-    print 'Error on Y',     np.max(np.abs(Y[:-1,:]-Y_real[:,1:].T))
-    print 'Error on ZMP X', np.max(np.abs(Z_x[:-1]-Z_x_real[1:].T))
-    print 'Error on ZMP Y', np.max(np.abs(Z_y[:-1]-Z_y_real[1:].T))
+    print('Error on X',     np.max(np.abs(X[:-1,:]-X_real[:,1:].T)))
+    print('Error on Y',     np.max(np.abs(Y[:-1,:]-Y_real[:,1:].T)))
+    print('Error on ZMP X', np.max(np.abs(Z_x[:-1]-Z_x_real[1:].T)))
+    print('Error on ZMP Y', np.max(np.abs(Z_y[:-1]-Z_y_real[1:].T)))

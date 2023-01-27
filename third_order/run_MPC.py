@@ -114,9 +114,9 @@ horizon_data = {}
 for i in range(desired_walking_time):
 
     time_k   = np.arange(T_k, T_k + (N*T), T)
-    print 'T_k = ', T_k, 's\n'
-    print 'loop number = ', i, '\n'
-    print 'Z_ref_k = ', Z_ref_k
+    print('T_k = ', T_k, 's\n')
+    print('loop number = ', i, '\n')
+    print('Z_ref_k = ', Z_ref_k)
 
     horizon_data[i] = {}
     horizon_data[i]['zmp_reference'] = Z_ref_k
@@ -183,15 +183,15 @@ max_admissible_cop = desired_Z_ref + np.tile([foot_length/2, foot_width/2], (des
 
 # time vs CoP and CoM in x: 'A.K.A run rabbit run !'
 # -------------------------------------------------
-plot_utils.plot_x(time, desired_walking_time, min_admissible_CoP, max_admissible_cop, \
+plot_utils.plot_x(time, desired_walking_time, min_admissible_CoP, max_admissible_cop, 
                   Z_x_total, X_total, desired_Z_ref)
 
 # time VS CoP and CoM in y: 'A.K.A what goes up must go down'
 # ----------------------------------------------------------
-plot_utils.plot_y(time, desired_walking_time, min_admissible_CoP, max_admissible_cop, \
+plot_utils.plot_y(time, desired_walking_time, min_admissible_CoP, max_admissible_cop, 
                   Z_y_total, Y_total, desired_Z_ref)
 
 # plot CoP, CoM in x Vs Cop, CoM in y:
 # -----------------------------------
-plot_utils.plot_xy(time, desired_walking_time, foot_length, foot_width, desired_Z_ref, \
+plot_utils.plot_xy(time, desired_walking_time, foot_length, foot_width, desired_Z_ref, 
                    Z_x_total, Z_y_total, X_total, Y_total)

@@ -146,7 +146,7 @@ def add_terminal_constraints(N, terminal_index, x_hat_k, y_hat_k, x_terminal,
 # ------------------------------------------------------------------------------
 if __name__=='__main__':
     import numpy.random as random
-    print ' visualize your matrices like a Neo ! '.center(60,'*')
+    print(' visualize your matrices like a Neo ! '.center(60,'*'))
     n       = 2
     m       = 1
     N       = 16
