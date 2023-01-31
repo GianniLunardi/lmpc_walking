@@ -39,9 +39,8 @@ from scipy.linalg import toeplitz
 # A_d (2x2 numpy.array)
 # B_d (2,  numpy.array)
 
-def discrete_LIP_dynamics(delta_t, g, h):
-    w   = math.sqrt(g/h)
-    A_d = np.array([[math.cosh(w*delta_t)  , (1/w)*math.sinh(w*delta_t)], \
+def discrete_LIP_dynamics(delta_t, w):
+    A_d = np.array([[math.cosh(w*delta_t)  , (1/w)*math.sinh(w*delta_t)],
                     [w*math.sinh(w*delta_t), math.cosh(w*delta_t)]])
 
     B_d = np.array([1 - math.cosh(w*delta_t), -w*math.sinh(w*delta_t)])
@@ -69,8 +68,8 @@ def discrete_LIP_dynamics(delta_t, g, h):
 # P_pu , P_vu : position and velocity partitions of the control inputs recursive
 #                dynamics matrix   (Nx2 numpy.array, NXN numpy.array)
 
-def compute_recursive_matrices(delta_t, g, h, N):
-    [A_d, B_d] = discrete_LIP_dynamics(delta_t, g, h)
+def compute_recursive_matrices(delta_t, w, N):
+    [A_d, B_d] = discrete_LIP_dynamics(delta_t, w)
 
     # pre-allocate memmory
     P_ps       = np.zeros((N,2))
@@ -144,14 +143,15 @@ if __name__=='__main__':
     print(' Test compute_recursive_matrices '.center(60,'*'))
     h           = 0.80
     g           = 9.81
+    w           = np.sqrt(g/h)
     delta_t     = 0.1
     N           = 4
     x_0 = random.rand(2) -0.5
     y_0 = random.rand(2) - 0.5
     U   = random.rand(2*N) - 0.5
 
-    [A_d, B_d] = discrete_LIP_dynamics(delta_t, g, h)
-    P_ps, P_vs, P_pu, P_vu = compute_recursive_matrices(delta_t, g, h, N)
+    [A_d, B_d] = discrete_LIP_dynamics(delta_t, w)
+    P_ps, P_vs, P_pu, P_vu = compute_recursive_matrices(delta_t, w, N)
     X, Y = compute_recursive_dynamics(P_ps, P_vs, P_pu, P_vu, N, x_0, y_0, U)
 
     X_real,      Y_real         = np.zeros((N,2)), np.zeros((N,2))
