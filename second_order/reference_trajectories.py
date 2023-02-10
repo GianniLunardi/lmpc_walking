@@ -70,3 +70,37 @@ def create_CoP_trajectory(no_steps, Foot_steps, walking_time, no_steps_per_T):
         Z_ref[j:j+no_steps_per_T, :] = Foot_steps[i,:]
         j = j + no_steps_per_T
     return Z_ref
+
+# Description:
+# -----------
+# this function computes a CoP reference trajectory based on a desired fixed foot step plan
+# on the horizon, with a variable duration for the first foot step and a sampling time
+
+# Parameters:
+# ----------
+#  foot_steps       : foot steps locations
+#  horizon          : MPC horizon
+#  nb_steps_per_T   : time steps during one foot step of the robot
+#  nb_steps_HS      : time steps in the first foot step,
+#                     considering the current MPC time step
+
+# Returns:
+# -------
+# Z_ref             : CoP reference trajectory for the current horizon
+# foot_steps        : updated foot steps locations
+
+def varying_CoP_trajectory(foot_steps, horizon, nb_steps_per_T, nb_steps_HS):
+    Z_ref = np.zeros((horizon, 2))
+    if nb_steps_HS + nb_steps_per_T < horizon and nb_steps_HS > 1:
+        Z_ref[:nb_steps_HS,:] = foot_steps[0,:]
+        Z_ref[nb_steps_HS:nb_steps_HS + nb_steps_per_T,:] = foot_steps[1,:]
+        Z_ref[nb_steps_HS + nb_steps_per_T:horizon,:] = foot_steps[2,:]
+    else:
+        if nb_steps_HS < 2:
+            foot_steps = foot_steps[1:,:]
+            Z_ref[:nb_steps_per_T,:] = foot_steps[0,:]
+            Z_ref[nb_steps_per_T:,:] = foot_steps[1,:]
+        else:
+            Z_ref[:nb_steps_HS,:] = foot_steps[0,:]
+            Z_ref[nb_steps_HS:,:] = foot_steps[1,:]
+    return Z_ref, foot_steps
