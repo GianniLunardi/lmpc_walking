@@ -102,6 +102,7 @@ def interpolate_lipm_traj(T_step, nb_steps, dt_mpc, dt_ctrl, com_z, g,
     foot_steps = np.empty((2,N_ctrl+1))*np.nan
     contact_phase = (N_ctrl+1)*['right']
     com[2,:] = com_z
+    w = np.sqrt(g/com_z)
     
     N_inner = int(N_ctrl/N)
     for i in range(N):
@@ -120,7 +121,7 @@ def interpolate_lipm_traj(T_step, nb_steps, dt_mpc, dt_ctrl, com_z, g,
                     
         for j in range(N_inner):
             ii = i*N_inner + j
-            (A,B) = discrete_LIP_dynamics((j+1)*dt_ctrl, g, com_z)
+            (A,B) = discrete_LIP_dynamics((j+1)*dt_ctrl, w)
             foot_steps[:,ii] = cop_ref[i,:].T
             cop[0,ii] = cop_x[i]
             cop[1,ii] = cop_y[i]
